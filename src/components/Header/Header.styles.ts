@@ -48,6 +48,10 @@ export const Wrapper = styled.div`
           margin-right: 5px;
         }
       }
+
+      @media (max-width: 800px) {
+        display: none;
+      }
     }
   }
 `;

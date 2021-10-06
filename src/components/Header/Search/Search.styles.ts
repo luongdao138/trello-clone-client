@@ -8,6 +8,10 @@ export const SearchWrapper = styled.div`
   margin-right: 35px;
   display: flex;
 
+  @media (max-width: 1000px) {
+    display: none;
+  }
+
   input {
     padding: 4px 10px;
     font-weight: 500;
