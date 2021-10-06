@@ -14,9 +14,10 @@ const authSlice = createSlice({
     },
     logout: (state) => {
       localStorage.removeItem('trello_token');
-      // window.location.href = 'http://localhost:3000/login';
       window.location.href =
-        'https://wizardly-nightingale-2253f3.netlify.app/login';
+        process.env.NODE_ENV === 'development'
+          ? 'http://localhost:3000/login'
+          : 'https://wizardly-nightingale-2253f3.netlify.app/login';
     },
   },
   extraReducers: {},
