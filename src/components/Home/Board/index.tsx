@@ -5,6 +5,7 @@ import { Member } from '../../../features/board/boardModel';
 import { fetch_request } from '../../../features/list/listSlice';
 import { fetch_request as fetch_board_request } from '../../../features/boardDetail/boardDetailSlice';
 import { Wrapper } from './Board.styles';
+import ReactTooltip from 'react-tooltip';
 
 interface Props {
   _id: string;
@@ -26,11 +27,13 @@ const Board = ({ _id, cover_photo, title, people }: Props) => {
         }, 200);
       }}
     >
+      <ReactTooltip effect='solid' />
       <img src={cover_photo} alt='' className='cover' />
       <p className='title'>{title}</p>
       <div className='people-wrapper'>
         {people.slice(0, 3).map((m) => (
           <img
+            data-tip={m.user.username}
             className='avatar'
             key={m.user._id}
             src={

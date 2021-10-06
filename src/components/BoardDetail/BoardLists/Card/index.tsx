@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Draggable, DraggableProvided } from 'react-beautiful-dnd';
 import { MdAdd, MdAttachFile, MdMessage } from 'react-icons/md';
+import ReactTooltip from 'react-tooltip';
 import { useAppSelector } from '../../../../app/hooks';
 import { useBoardListContext } from '../../../../context/BoardListContext';
 import { CardInList } from '../../../../features/list/listModel';
@@ -46,6 +47,7 @@ const Card = ({ card, index }: Props) => {
           {...provided.dragHandleProps}
           {...provided.draggableProps}
         >
+          <ReactTooltip effect='solid' />
           {card.cover_photo && (
             <img className='cover-photo' src={card.cover_photo} alt='' />
           )}
@@ -62,7 +64,12 @@ const Card = ({ card, index }: Props) => {
           <div className='bottom'>
             <div className='members-wrapper'>
               {card.members?.slice(0, 2).map((m) => (
-                <Avatar src={m.avatar || ''} width='24px' key={m._id} />
+                <Avatar
+                  data-tip={m.username}
+                  src={m.avatar || ''}
+                  width='24px'
+                  key={m._id}
+                />
               ))}
               {card.members?.length > 2 && (
                 <span className='more'>

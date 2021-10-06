@@ -12,6 +12,7 @@ import { Button, Wrapper } from './BoardDetailHeader.styles';
 import { toast } from 'react-toastify';
 import checkMember from '../../../helpers/checkMember';
 import { update_board } from '../../../features/board/boardSlice';
+import ReactTooltip from 'react-tooltip';
 
 interface Props {
   boardId: string;
@@ -53,6 +54,7 @@ const BoardDetailHeader = ({ boardId }: Props) => {
 
   return (
     <Wrapper>
+      <ReactTooltip effect='solid' />
       <BoardMenu
         board={board}
         onClose={() => {
@@ -81,6 +83,7 @@ const BoardDetailHeader = ({ boardId }: Props) => {
       <div className='members-wrapper'>
         {board.members?.map((m) => (
           <Avatar
+            data-tip={m.user.username}
             className='avatar'
             width='32px'
             src={

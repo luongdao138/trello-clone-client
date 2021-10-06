@@ -7,6 +7,7 @@ import BoardDetailPage from './pages/BoardDetailPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SearchPage from './pages/SearchPage';
+
 const App = () => {
   return (
     <Router>
