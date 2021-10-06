@@ -10,6 +10,7 @@ import SearchPage from './pages/SearchPage';
 import useEventListener from './hooks/useEventListener';
 import { useState } from 'react';
 import MobilePage from './pages/MobilePage';
+import RegisterPage from './pages/RegisterPage';
 
 const DesktopScreen = (
   <Router>
@@ -33,6 +34,9 @@ const DesktopScreen = (
       </Route>
       <Route path='/login' exact>
         <LoginPage />
+      </Route>
+      <Route path='/register' exact>
+        <RegisterPage />
       </Route>
     </Switch>
   </Router>

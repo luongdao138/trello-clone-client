@@ -1,20 +1,24 @@
 import { Content, Wrapper } from './styles/Login.styles';
 import bg from '../assets/bg.jpg';
 import { Link, useHistory } from 'react-router-dom';
-import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
 import React, { useState } from 'react';
 import useSignin from '../hooks/useSignin';
 import axiosInstance from '../api/axios';
 import axios from 'axios';
 import { User } from '../features/auth/authModel';
 
-interface LoginUser {
+interface RegisterUser {
   email: string;
   password: string;
+  username: string;
 }
 
-const LoginPage = () => {
-  const [user, setUser] = useState<LoginUser>({ email: '', password: '' });
+const SignupPage = () => {
+  const [user, setUser] = useState<RegisterUser>({
+    email: '',
+    password: '',
+    username: '',
+  });
   const { loading } = useSignin();
   const history = useHistory();
   const [error, setError] = useState<string | null>(null);
@@ -22,14 +26,13 @@ const LoginPage = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const { data } = await axiosInstance.post<{ user: User; token: string }>(
-        '/auth/login',
+        '/auth/register',
         user
       );
-      console.log(data);
 
       localStorage.setItem('trello_token', data.token);
       history.push('/');
@@ -49,12 +52,19 @@ const LoginPage = () => {
       <Content>
         <div className='login-wrapper'>
           <p className='main-title'>Welcome to trello clone</p>
-          <Link to='/register' className='sub-title'>
-            Not have an account?
+          <Link to='/login' className='sub-title'>
+            Have an account
           </Link>
           {error && <p className='error-message'>{error}</p>}
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleRegister}>
             <div className='form-group'>
+              <input
+                type='text'
+                placeholder='Username'
+                name='username'
+                value={user.username}
+                onChange={handleChange}
+              />
               <input
                 type='text'
                 placeholder='Email'
@@ -72,16 +82,12 @@ const LoginPage = () => {
                 onChange={handleChange}
               />
             </div>
-            <button className='btn'> Sign in</button>
+            <button className='btn'>Register</button>
           </form>
-          <div className='actions'>
-            <div className='remember'>
-              <MdCheckBox />
-              <span>Remember me</span>
-            </div>
-            <Link to='/'>Forgot Password</Link>
-          </div>
-          <p className='other-options'>- Or Sign In With -</p>
+
+          <p className='other-options' style={{ marginTop: '15px' }}>
+            - Or Register With -
+          </p>
           <div className='btn-wrapper'>
             <button>Facebook</button>
             <button>Twitter</button>
@@ -92,4 +98,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;
