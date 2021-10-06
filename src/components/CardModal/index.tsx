@@ -74,9 +74,11 @@ const CardModal = ({ onCloseModal }: Props) => {
           {cover && (
             <div className='cover-wrapper'>
               <img src={cover} alt='' />
-              <span className='close' onClick={() => setCover(null)}>
-                <MdClose />
-              </span>
+              {checkMember(board.members, user._id) && (
+                <span className='close' onClick={() => setCover(null)}>
+                  <MdClose />
+                </span>
+              )}
             </div>
           )}
           <div className='main'>

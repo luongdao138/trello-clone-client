@@ -17,6 +17,8 @@ export const store = configureStore({
     card: cardSlice,
     comments: commentsSlice,
   },
+  devTools:
+    process.env.NODE_ENV === 'development' && typeof window !== 'undefined',
 });
 
 export type AppDispatch = typeof store.dispatch;
