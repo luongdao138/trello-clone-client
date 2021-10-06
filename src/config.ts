@@ -1,0 +1,4 @@
+export const UNSPLASH_CREDENTIALS = {
+  ACCESS_KEY: 'veQZ53I7H96-wU1Rg-TD5SiiGnPdCd6Feu3_NvCbGyo',
+  SECRET_KEY: 'rt2GwKurmDZO71cVn5WSTKe5jjBra2ApqXEg7hgcdGs',
+};
