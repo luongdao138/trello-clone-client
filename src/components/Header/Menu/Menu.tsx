@@ -15,14 +15,14 @@ const Menu = () => {
 
   return (
     <MenuWrapper>
-      <MenuItem to='/' color='#4f4f4f'>
+      <MenuItem to='/profile' color='#4f4f4f'>
         <FaUserCircle />
         <span>My Profile</span>
       </MenuItem>
-      <MenuItem to='/' color='#4f4f4f'>
+      {/* <MenuItem to='/' color='#4f4f4f'>
         <MdGroup />
         <span>Group Chat</span>
-      </MenuItem>
+      </MenuItem> */}
       <div className='divider'></div>
       <MenuItem to='/' color='#EB5757' onClick={handleLogout}>
         <MdExitToApp />

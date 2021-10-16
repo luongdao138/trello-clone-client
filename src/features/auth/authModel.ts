@@ -4,6 +4,7 @@ export interface User {
   username: string;
   avatar?: string;
   bio?: string;
+  phone?: string;
 }
 
 export interface Auth {

@@ -11,6 +11,7 @@ import useEventListener from './hooks/useEventListener';
 import { useState } from 'react';
 import MobilePage from './pages/MobilePage';
 import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage';
 
 const DesktopScreen = (
   <Router>
@@ -25,6 +26,11 @@ const DesktopScreen = (
       <Route path='/board/:boardId' exact>
         <Layout>
           <BoardDetailPage />
+        </Layout>
+      </Route>
+      <Route path='/profile' exact>
+        <Layout>
+          <ProfilePage />
         </Layout>
       </Route>
       <Route path='/search' exact>

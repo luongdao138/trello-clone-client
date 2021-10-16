@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   position: absolute;
-  /* left: 0; */
   z-index: 20;
   background-color: var(--white-color);
   padding: 10px;
